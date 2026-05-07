@@ -20,6 +20,10 @@ npx skills add google-labs-code/stitch-skills --all
 npx skills add google-labs-code/stitch-skills --skill react:components --global
 ```
 
+## Prerequisites
+
+These skills require the **Stitch MCP** server to be configured and running in your agent's environment. Make sure you have followed the [Stitch MCP Setup Instructions](https://stitch.withgoogle.com/docs/mcp/setup/) to register the server and set up appropriate environment variables and credentials.
+
 ## Available Skills
 
 ### 1. Stitch Design Skills
