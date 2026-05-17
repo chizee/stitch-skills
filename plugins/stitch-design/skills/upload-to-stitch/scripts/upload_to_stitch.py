@@ -44,6 +44,7 @@ _MIME_TYPES = {
     ".webp": "image/webp",
     ".html": "text/html",
     ".htm": "text/html",
+    ".md": "text/markdown",
 }
 
 
@@ -136,7 +137,7 @@ def build_screen_request(
       "mimeType": mime_type,
   }
 
-  if mime_type == "text/html":
+  if mime_type in ("text/html", "text/markdown"):
     screen = {
         "htmlCode": file_obj,
         "screenType": "DOCUMENT",

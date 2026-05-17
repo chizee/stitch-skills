@@ -56,27 +56,20 @@ full analysis workflow.
 Write `.stitch/DESIGN.md` following the `extract-design-md` skill's output
 structure.
 
-#### 4. Create Design System in Stitch (MCP)
+#### 4. Upload DESIGN.md and Create Design System in Stitch
 
-> [!WARNING]
-> **Checkpoint — User Confirmation Required.**
-> Before calling `upload_design_md` and proceeding to upload, you **MUST** pause and ask the user to review both the extracted static HTML file(s) and the generated `DESIGN.md`. Present a summary of the extracted design system (key colors, fonts, roundness, overall theme) and the path to the HTML file, and wait for explicit approval. Do **NOT** proceed until the user confirms.
+Delegate to the `manage-design-system` skill to upload the `DESIGN.md` and
+create the design system in Stitch. Read
+[skills/manage-design-system/SKILL.md](../manage-design-system/SKILL.md) for
+the full workflow (upload script usage, `create_design_system_from_design_md`
+call, and required schemas).
 
-> [!IMPORTANT]
-> You **MUST** create the design system in the Stitch platform using the MCP tools. Do not just create the local file.
-> 
-> Follow the two-step pattern:
-> 1. Call `upload_design_md` with the base64 encoded content of the `DESIGN.md` file and the `projectId`. This uploads the markdown and returns the source screen ID.
-> 2. Immediately call `create_design_system_from_design_md` with the `projectId` and `selectedScreenInstance` (constructed using the returned source screen ID and fetching the screen instance ID from `get_project`).
-> 
-> Refer to the `manage-design-system` skill for detailed schemas and required fields.
+#### 5. Upload HTML to Stitch
 
-#### 5. Upload to Stitch
-
-Delegate to the `upload-to-stitch` skill to upload the extracted HTML file.
+Use the same `upload-to-stitch` skill's script to upload the extracted HTML file.
 Read [skills/upload-to-stitch/SKILL.md](../upload-to-stitch/SKILL.md) for detailed instructions and script usage.
 
 You will need:
 - The path to the standalone HTML file generated in Step 1.
-- Your Stitch API Key (see `upload-to-stitch` instructions for location).
+- Your Stitch API Key (same key used in Step 4).
 - The target `projectId`.

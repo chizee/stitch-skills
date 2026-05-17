@@ -4,15 +4,21 @@ Use these examples to format your Stitch MCP design system tool calls correctly.
 
 ---
 
-## `upload_design_md`
+## Upload `DESIGN.md` (via `upload_to_stitch.py` script)
 
-Uploads a `DESIGN.md` file content to a project. This is the first step in creating a design system from a markdown file.
+Uploads a `DESIGN.md` file to a project via the `BatchCreateScreens` endpoint.
+This is the first step in creating a design system from a markdown file.
 
-```json
-{
-  "projectId": "4044680601076201931",
-  "designMdBase64": "LS0tCm5hbWU6IEF1cmEgUXVpZXQgTGl2aW5n..." // Base64 encoded content of DESIGN.md
-}
+> [!NOTE]
+> Use the `upload-to-stitch` skill's script instead of the `upload_design_md`
+> MCP tool. The script handles base64 encoding in-process, avoiding the model's
+> output token limit.
+
+```bash
+python3 <SKILL_DIR>/scripts/upload_to_stitch.py \
+  --project-id <PROJECT_ID> \
+  --file-path /path/to/DESIGN.md \
+  --api-key <API_KEY>
 ```
 
 ---
@@ -33,14 +39,16 @@ Creates a design system for a project using the uploaded `DESIGN.md` file.
 ```
 
 > [!NOTE]
-> You must call `upload_design_md` first to get the source screen ID, and then fetch the project details with `get_project` to find the corresponding screen instance ID to pass as `id` in `selectedScreenInstance`.
+> You must upload `DESIGN.md` via the script first to get the source screen ID, and then fetch the project details with `get_project` to find the corresponding screen instance ID to pass as `id` in `selectedScreenInstance`.
 
 ---
 
 ## `update_design_system`
 
-Updates an existing design system for a project. This is needed to set the
-theme and display the design system in the UI.
+Updates an existing design system for a project. This is **required** immediately after calling `create_design_system` to set the theme and display the design system in the UI.
+
+> [!NOTE]
+> While `update_design_system` is mandatory after the basic `create_design_system` call, you do **not** need to call it after `create_design_system_from_design_md`. The latter automatically populates and updates all theme tokens directly from the parsed YAML frontmatter of the uploaded `DESIGN.md`.
 
 ```json
 {
