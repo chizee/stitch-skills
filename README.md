@@ -81,6 +81,8 @@ npx skills --help
 
 These skills require the **Stitch MCP** server to be configured and running in your agent's environment. Make sure you have followed the [Stitch MCP Setup Instructions](https://stitch.withgoogle.com/docs/mcp/setup/) to register the server and set up appropriate environment variables and credentials.
 
+> **Docs navigation:** If a link on [stitch.withgoogle.com/docs](https://stitch.withgoogle.com/docs/) redirects incorrectly, open the target path under the same host (e.g. `https://stitch.withgoogle.com/docs/learn/device-types/`).
+
 ## Available Plugins
 
 ### Design (`stitch-design`)
@@ -108,6 +110,7 @@ Code generation, framework integration, and asset compilation from Stitch design
 | [remotion](plugins/stitch-build/skills/remotion/) | Generate walkthrough videos from Stitch projects using Remotion with smooth transitions and zooming | *"Generate a walkthrough video of the Stitch project `projects/456`."* |
 | [react-native](plugins/stitch-build/skills/react-native/) | Convert Stitch HTML designs to production-ready React Native components with StyleSheet and platform-specific code | *"Convert the Stitch design to React Native components with proper theme and navigation."* |
 | [shadcn-ui](plugins/stitch-build/skills/shadcn-ui/) | Expert guidance for integrating and building applications with shadcn/ui components | *"Set up shadcn/ui and build a data table with sorting and filtering."* |
+| [react-vite-dashboard](plugins/stitch-build/skills/react-vite-dashboard/) | Convert Stitch screens to React + Vite dashboards with TanStack Query, DESIGN.md tokens, and Web3 read patterns | *"Build a DeFi portfolio dashboard from this Stitch screen using our DESIGN.md."* |
 
 ---
 
@@ -140,6 +143,7 @@ plugins/
 │   └── skills/
 │       ├── react-components/    — stitch::react-components
 │       ├── react-native/
+│       ├── react-vite-dashboard/
 │       ├── remotion/
 │       └── shadcn-ui/
 └── stitch-utilities/       — Design utilities & assistants plugin

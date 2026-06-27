@@ -14,6 +14,7 @@
     "components",
     "remotion",
     "shadcn-ui",
+    "react-vite-dashboard",
     "code-generation",
     "video"
   ]
